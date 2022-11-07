@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MVC_B4.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Danh sách sản phẩm</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header bg-info text-center">@Html.DisplayFor(modelItem => item.Manufacturer)</div>
+                <div class="card-body">
+                    <!-- Bấm vào tên hiện chi tiết -->
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" style="max-width:100%" />
+                    </a>
+                    <p>Giá bán :<span class="text-danger">@Html.DisplayFor(modelItem => item.Price)</span></p>
+                </div>
+                <div class="card-footer bg-light">
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <!--Hiện tên sản phẩm-->
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
